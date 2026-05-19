@@ -1,22 +1,36 @@
 package com.example.controller;
 
+import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("exam02")
 
 public class Exam02Controller {
+    @Autowired
+    HttpSession session;
+
     @GetMapping("/")
     public String index() {
         return "exam02";
     }
 
     @PostMapping("/calc-post")
-    public String calcPost() {
+    public String calcPost(Integer num1, Integer num2) {
+        Integer numResult = num1 + num2;
+        session.setAttribute("num1", num1);
+        session.setAttribute("num2", num2);
+        session.setAttribute("numResult", numResult);
         return "exam02-result";
+    }
+
+    @GetMapping("/result2")
+    public String result2() {
+        return "exam02-result2";
     }
 
 
