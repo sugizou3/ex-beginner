@@ -8,10 +8,10 @@
   <body>
     <h1>合計金額</h1>
     <div>
-      ■ 税抜き価格 <br /><span th:text="${application.netPrice}">1000</span>
+      ■ 税抜き価格 <br /><span th:text="${#numbers.formatInteger(application.netPrice,1,'COMMA')}">1000</span>
     </div>
     <div>
-      ■ 税込み価格 <br /><span th:text="${application.totalPrice}">1100</span>
+      ■ 税込み価格 <br /><span th:text="${#numbers.formatInteger(application.totalPrice,1,'COMMA')}">1100</span>
     </div>
   </body>
 </html>
